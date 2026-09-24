@@ -18,7 +18,7 @@ window.SITE_CONFIG = {
     {
       id: "gift4",
       name: "Oishi 外銷級蒲燒鰻",
-      spec: "每盒 1 片，每片約 160g（±25g），真空包裝",
+      spec: "每盒 4 片，每片約 160g（±25g），真空包裝",
       price: 599,
       image: "images/giftbox.jpg"
     }
