@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html lang="zh-Hant-TW">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>外銷級蒲燒鰻｜800 盒成團預購</title>
+<meta name="description" content="38 年匠人飼養、外銷日本規格的蒲燒鰻禮盒，滿 800 盒即成團。動物用藥殘留檢驗未檢出，安心上桌。">
+<meta property="og:title" content="外銷級蒲燒鰻｜800 盒成團預購">
+<meta property="og:description" content="38 年匠人飼養、外銷日本規格，滿 800 盒即成團出貨。">
+<meta property="og:image" content="images/giftbox.jpg">
+<meta name="theme-color" content="#101c40">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700&family=Noto+Serif+TC:wght@500;700;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<!-- ===== 頂部導覽 ===== -->
+<header class="nav" id="nav">
+  <div class="wrap nav-inner">
+    <a href="#top" class="brand"><span class="seal">鰻</span><span class="brand-name">蒲燒鰻</span></a>
+    <nav class="nav-links" aria-label="主選單">
+      <a href="#features">品牌特色</a>
+      <a href="#farm">產地實拍</a>
+      <a href="#safety">安心檢驗</a>
+      <a href="#order">立即預購</a>
+      <a href="#contact">聯絡我們</a>
+    </nav>
+    <button class="cart-btn" id="cartOpen" aria-label="開啟購物車">
+      <svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" d="M3 4h2l2.4 11.2a1.5 1.5 0 0 0 1.5 1.2h8.6a1.5 1.5 0 0 0 1.5-1.1L21 8H6.2"/><circle cx="9.5" cy="20" r="1.3" fill="currentColor"/><circle cx="17.5" cy="20" r="1.3" fill="currentColor"/></svg>
+      <span>購物車</span><b class="badge" id="cartBadge">0</b>
+    </button>
+  </div>
+</header>
+
+<main id="top">
+
+<!-- ===== 首屏 ===== -->
+<section class="hero">
+  <div class="wave-bg" aria-hidden="true"></div>
+  <div class="wrap hero-grid">
+    <div class="hero-text">
+      <p class="eyebrow">UNAGI ・ 預購開團</p>
+      <h1>外銷級<br><span>蒲燒鰻</span></h1>
+      <p class="lead">三十八年匠人飼養，依外銷日本規格逐尾挑選。<br>滿 <b id="goalText">800</b> 盒即成團，新鮮直送到府。</p>
+
+      <div class="progress-card" aria-live="polite">
+        <div class="pc-head">
+          <span>團購進度</span>
+          <span class="pc-num"><b id="pTotal">0</b> / <span id="pGoal">800</span> 盒</span>
+        </div>
+        <div class="bar" role="progressbar" aria-valuemin="0" aria-valuemax="800" aria-valuenow="0" id="pBar">
+          <div class="bar-fill" id="pFill"></div>
+          <span class="bar-pct" id="pPct">0%</span>
+        </div>
+        <div class="pc-foot">
+          <span id="pRemain">還差 800 盒即成團</span>
+          <span id="pDeadline"></span>
+        </div>
+      </div>
+
+      <div class="hero-cta">
+        <a href="#order" class="btn btn-red">立即預購</a>
+        <a href="#features" class="btn btn-ghost">了解更多</a>
+      </div>
+    </div>
+    <figure class="hero-img">
+      <img src="images/giftbox.jpg" alt="蒲燒鰻禮盒外觀，牛皮紙盒內裝四包真空蒲燒鰻" width="1262" height="1024">
+      <figcaption>禮盒示意圖</figcaption>
+    </figure>
+  </div>
+</section>
+
+<!-- ===== 品牌特色 ===== -->
+<section class="sec sec-kraft" id="features">
+  <div class="wrap">
+    <div class="sec-head">
+      <p class="eyebrow dark">OUR PROMISE</p>
+      <h2>關於我們的鰻魚</h2>
+      <p class="sub">從鰻苗到上桌，每一個環節都用外銷的標準對待。</p>
+    </div>
+    <div class="feat-grid">
+      <article class="feat">
+        <div class="feat-no">38<small>年</small></div>
+        <h3>匠人飼養</h3>
+        <p>三十八年養鰻經驗，看水色、看食況，一池一池細心照顧。</p>
+      </article>
+      <article class="feat">
+        <div class="feat-icon" aria-hidden="true">
+          <svg viewBox="0 0 48 48"><path d="M6 30l14-4 10-16 4 2-6 14 12-2 2 4-30 8z" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linejoin="round"/><path d="M6 40h36" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/></svg>
+        </div>
+        <h3>外銷日本規格</h3>
+        <p>依外銷日本的品質標準分級，尺寸、肉質、油花都經過挑選。</p>
+      </article>
+      <article class="feat">
+        <div class="feat-icon" aria-hidden="true">
+          <svg viewBox="0 0 48 48"><circle cx="17" cy="20" r="7" fill="none" stroke="currentColor" stroke-width="2.2"/><circle cx="31" cy="28" r="9" fill="none" stroke="currentColor" stroke-width="2.2"/><circle cx="31" cy="28" r="2.4" fill="currentColor"/><circle cx="17" cy="20" r="2" fill="currentColor"/></svg>
+        </div>
+        <h3>科學健康養殖</h3>
+        <p>飼料添加益生菌，搭配智利魚粉，營養均衡，鰻魚活力足。</p>
+      </article>
+      <article class="feat">
+        <div class="feat-icon" aria-hidden="true">
+          <svg viewBox="0 0 48 48"><path d="M4 22c5 0 5-4 10-4s5 4 10 4 5-4 10-4 5 4 10 4M4 32c5 0 5-4 10-4s5 4 10 4 5-4 10-4 5 4 10 4" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/></svg>
+        </div>
+        <h3>深海 低汙染</h3>
+        <p>潔淨水源、低汙染的養殖環境，是好鰻魚最基本的起點。</p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ===== 產地實拍 ===== -->
+<section class="sec sec-navy" id="farm">
+  <div class="wrap">
+    <div class="sec-head">
+      <p class="eyebrow">FROM OUR FARM</p>
+      <h2>產地實拍</h2>
+      <p class="sub">沒有修圖、沒有擺拍，這就是我們每天的工作現場。</p>
+    </div>
+    <div class="farm-grid">
+      <figure class="farm-card">
+        <img src="images/sorting.jpg" alt="工作人員在養殖池邊以人工逐尾分級挑選鰻魚" loading="lazy" width="1080" height="1920">
+        <figcaption><b>人工逐尾分級</b>起鰻當天，由經驗豐富的師傅依大小與品質逐尾挑選。</figcaption>
+      </figure>
+      <figure class="farm-card">
+        <img src="images/eels.jpg" alt="養殖池中活力充沛的鰻魚近照" loading="lazy" width="1100" height="1916">
+        <figcaption><b>活力鰻魚近照</b>流水充氧的池子裡，鰻魚體色光亮、游動有力。</figcaption>
+      </figure>
+    </div>
+  </div>
+</section>
+
+<!-- ===== 安心檢驗 ===== -->
+<section class="sec sec-cream" id="safety">
+  <div class="wrap safety-grid">
+    <div class="safety-main">
+      <p class="eyebrow dark">SAFETY TEST</p>
+      <h2>用藥檢驗<br>安心上桌</h2>
+      <div class="nd-stat">
+        <span class="nd-num">19</span>
+        <span class="nd-txt">項檢驗<br><b>全數 N.D. 未檢出</b></span>
+      </div>
+      <p class="muted">送驗單位：台灣區鰻蝦輸出業同業公會 水產品檢驗中心<br>
+        報告書編號：53175 ・ 報告發行日：115 年 09 月 04 日</p>
+      <p class="fine">N.D.（Not Detected）表示低於定量極限、未檢出。檢驗結果僅對送驗樣品負責，如需查閱完整報告歡迎私訊詢問。</p>
+    </div>
+    <div class="test-list">
+      <div class="test-group">
+        <h3>孔雀綠及其代謝物 <span>1 項</span></h3>
+        <p>孔雀綠（含還原型孔雀綠總量）</p>
+      </div>
+      <div class="test-group">
+        <h3>農藥（五松） <span>5 項</span></h3>
+        <p>陶斯松、芬殺松、撲滅松、三氯松、二氯松</p>
+      </div>
+      <div class="test-group">
+        <h3>硝基呋喃代謝物 <span>4 項</span></h3>
+        <p>AOZ、AMOZ、SC、AH</p>
+      </div>
+      <div class="test-group">
+        <h3>動物用藥多重殘留 <span>9 項</span></h3>
+        <p>西氟沙星、恩氟喹啉羧酸、歐索林酸、磺胺二甲氧嘧啶、磺胺一甲氧嘧啶、磺胺甲基嘧啶、磺胺二甲基嘧啶、磺胺喹啉、三氯仿</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== 營養 ===== -->
+<section class="sec sec-navy2" id="nutrition">
+  <div class="wrap nutri">
+    <div>
+      <p class="eyebrow">NUTRITION</p>
+      <h2>一尾好鰻<br>滿滿的營養</h2>
+      <p class="sub left">鰻魚自古就是日本人夏日餐桌上的經典料理，肉質豐腴、營養豐富，全家大小都適合。</p>
+    </div>
+    <ul class="chips">
+      <li><b>蛋白質</b><span>優質動物性蛋白</span></li>
+      <li><b>維生素 A</b><span>含量豐富</span></li>
+      <li><b>維生素 E</b><span>天然來源</span></li>
+      <li><b>DHA</b><span>Omega-3 脂肪酸</span></li>
+      <li><b>EPA</b><span>Omega-3 脂肪酸</span></li>
+      <li><b>鈣</b><span>礦物質</span></li>
+      <li><b>膠原蛋白</b><span>魚皮Q彈</span></li>
+    </ul>
+  </div>
+</section>
+
+<!-- ===== 預購 ===== -->
+<section class="sec sec-kraft" id="order">
+  <div class="wrap">
+    <div class="sec-head">
+      <p class="eyebrow dark">PRE-ORDER</p>
+      <h2>立即預購</h2>
+      <p class="sub">加入購物車並按下「確定下單」、填完資料送出，才會計入團購進度。</p>
+    </div>
+
+    <div id="productList" class="product-list"></div>
+
+    <ol class="steps">
+      <li><span>1</span><b>選擇盒數</b>加入購物車</li>
+      <li><span>2</span><b>確定下單</b>填寫收件資料</li>
+      <li><span>3</span><b>等待成團</b>滿 800 盒通知付款</li>
+      <li><span>4</span><b>冷凍宅配</b>新鮮送到府</li>
+    </ol>
+  </div>
+</section>
+
+<!-- ===== 常見問題 ===== -->
+<section class="sec sec-cream" id="faq">
+  <div class="wrap narrow">
+    <div class="sec-head">
+      <p class="eyebrow dark">FAQ</p>
+      <h2>常見問題</h2>
+    </div>
+    <details><summary>預購需要先付款嗎？</summary><p id="faqPay"></p></details>
+    <details><summary>如果沒有達到 800 盒怎麼辦？</summary><p>未達成團門檻，本次團購即取消，因為不需先付款，您不會有任何損失；我們會以 Email 通知每位預購者。</p></details>
+    <details><summary>什麼時候出貨？運費怎麼算？</summary><p id="faqShip"></p></details>
+    <details><summary>收到後如何保存與加熱？</summary><p>收到請立即冷凍保存。食用前放冷藏退冰，連同真空袋隔水加熱約 5–8 分鐘，或剪開後以烤箱／平底鍋小火加熱，淋上醬汁即可做鰻魚飯。</p></details>
+    <details><summary>下單後想修改或取消？</summary><p>請透過 LINE 或臉書私訊，告知訂單編號與姓名，我們會為您處理。</p></details>
+  </div>
+</section>
+
+<!-- ===== 聯絡 ===== -->
+<section class="sec sec-navy" id="contact">
+  <div class="wrap contact">
+    <div>
+      <p class="eyebrow">CONTACT</p>
+      <h2>有任何問題<br>歡迎找我們</h2>
+      <p class="sub left">掃描 QR Code 加入 LINE，或到臉書粉專私訊，我們會盡快回覆。</p>
+      <div class="contact-btns">
+        <a class="btn btn-line" id="lineBtn" href="#" target="_blank" rel="noopener">加入 LINE</a>
+        <a class="btn btn-fb" id="fbBtn" href="#" target="_blank" rel="noopener">臉書粉專</a>
+      </div>
+    </div>
+    <div class="qr">
+      <img src="images/line-qr.png" alt="LINE 加好友 QR Code" width="600" height="600" loading="lazy">
+      <span>LINE 掃碼加好友</span>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer class="footer">
+  <div class="wrap">
+    <p>© <span id="yr"></span> 蒲燒鰻預購團 ・ 本網站僅收集出貨所需資料，不作其他用途。</p>
+  </div>
+</footer>
+
+<!-- 手機底部固定列 -->
+<div class="mobile-bar" id="mobileBar">
+  <div class="mb-prog"><span id="mbText">0 / 800 盒</span><div class="mb-bar"><i id="mbFill"></i></div></div>
+  <a href="#order" class="btn btn-red btn-sm">預購</a>
+</div>
+
+<!-- ===== 購物車抽屜 ===== -->
+<div class="overlay" id="overlay" hidden></div>
+<aside class="drawer" id="drawer" aria-hidden="true" aria-labelledby="drawerTitle">
+  <div class="drawer-head">
+    <h3 id="drawerTitle">購物車</h3>
+    <button class="x" id="cartClose" aria-label="關閉">×</button>
+  </div>
+  <div class="drawer-body" id="cartItems"></div>
+  <div class="drawer-foot">
+    <div class="sum-row"><span>合計</span><b id="cartSum">NT$ 0</b></div>
+    <p class="fine">運費另計，成團後通知。</p>
+    <button class="btn btn-red btn-block" id="checkoutBtn" disabled>確定下單</button>
+  </div>
+</aside>
+
+<!-- ===== 下單表單 ===== -->
+<div class="modal" id="orderModal" role="dialog" aria-modal="true" aria-labelledby="orderTitle" hidden>
+  <div class="modal-box">
+    <button class="x" id="orderClose" aria-label="關閉">×</button>
+
+    <div id="orderFormView">
+      <h3 id="orderTitle">填寫預購資料</h3>
+      <div class="order-summary" id="orderSummary"></div>
+      <div class="demo-note" id="demoNote" hidden>目前為展示模式：尚未連接訂單系統，送出不會寫入資料。</div>
+      <form id="orderForm" novalidate>
+        <label>姓名 <em>*</em><input name="name" required maxlength="30" autocomplete="name"></label>
+        <label>手機 <em>*</em><input name="phone" required inputmode="numeric" placeholder="0912345678" maxlength="10" autocomplete="tel"></label>
+        <label>Email <em>*</em><input name="email" type="email" required maxlength="80" autocomplete="email" placeholder="用於寄送成團與付款通知"></label>
+        <label>收件地址 <em>*</em><input name="address" required maxlength="120" autocomplete="street-address"></label>
+        <label>希望到貨時段
+          <select name="timeslot"><option>不指定</option><option>上午（13 點前）</option><option>下午（14–18 點）</option></select>
+        </label>
+        <label>備註<textarea name="note" rows="2" maxlength="200" placeholder="例如：送禮用、指定日期…"></textarea></label>
+        <input class="hp" name="website" tabindex="-1" autocomplete="off" aria-hidden="true">
+        <label class="check"><input type="checkbox" name="agree" required> 我同意提供以上資料作為本次預購聯繫與出貨使用</label>
+        <p class="form-err" id="formErr" role="alert"></p>
+        <button class="btn btn-red btn-block" type="submit" id="submitBtn">送出預購</button>
+      </form>
+    </div>
+
+    <div id="orderDoneView" hidden>
+      <div class="done-seal">預購<br>完成</div>
+      <h3>感謝您的預購！</h3>
+      <p>訂單編號：<b id="doneId"></b></p>
+      <p class="muted" id="doneMsg">我們已將確認信寄到您的 Email。成團後會再通知付款與出貨資訊。</p>
+      <button class="btn btn-ghost-dark btn-block" id="doneClose">回到頁面</button>
+    </div>
+  </div>
+</div>
+
+<div class="toast" id="toast" role="status"></div>
+
+<script src="config.js"></script>
+<script src="app.js"></script>
+</body>
+</html>
