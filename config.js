@@ -5,7 +5,7 @@
 window.SITE_CONFIG = {
   // 1) Apps Script 部署後得到的「網頁應用程式網址」，貼在引號內
   //    留空 = 展示模式（不會真的寫入訂單）
-  scriptUrl: "",
+  scriptUrl: "https://script.google.com/macros/s/AKfycbz_kfy3z_U-EAjUyze20uAWbH7mQEFhClTE1O7X1Cwnus2GwMB_ydZDGDclVMqUPJKA/exec",
 
   // 2) 成團目標（盒）—— 需與 Apps Script 內的 GOAL 一致
   goal: 800,
