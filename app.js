@@ -115,7 +115,14 @@
 
   /* ---------- 商品卡 ---------- */
   $("#productList").innerHTML = PRODUCTS.map(function (p) {
-    return '<article class="product" data-id="' + esc(p.id) + '"><img src="' + esc(p.image) + '" alt="' + esc(p.name) + '" loading="lazy">' +
+    var gal = (p.gallery && p.gallery.length) ? p.gallery : [{ src: p.image, caption: "" }];
+    var slides = gal.map(function (g, i) {
+      return '<figure class="slide"><img src="' + esc(g.src) + '" alt="' + esc(p.name + (g.caption ? "－" + g.caption : "")) + '"' + (i ? ' loading="lazy"' : '') + '>' +
+        (g.caption ? '<figcaption>' + esc(g.caption) + '</figcaption>' : '') + '</figure>';
+    }).join("");
+    var nav = gal.length > 1 ? '<button type="button" class="gal-btn prev" aria-label="上一張">‹</button><button type="button" class="gal-btn next" aria-label="下一張">›</button>' +
+      '<div class="gal-dots">' + gal.map(function (g, i) { return '<button type="button" class="dot' + (i ? '' : ' on') + '" data-i="' + i + '" aria-label="第 ' + (i + 1) + ' 張"></button>'; }).join("") + '</div>' : '';
+    return '<article class="product" data-id="' + esc(p.id) + '"><div class="gallery"><div class="track">' + slides + '</div>' + nav + '</div>' +
       '<div class="product-body"><h3>' + esc(p.name) + '</h3><p class="product-spec">' + esc(p.spec) + '</p>' +
       '<div class="price"><small>預購價</small>' + fmt(p.price) + '<small style="margin-left:4px">/ 盒</small></div>' +
       '<div class="product-actions"><div class="qty"><button type="button" data-d="-1" aria-label="減少">−</button>' +
@@ -123,6 +130,19 @@
       '<button type="button" class="btn btn-red add-btn">加入購物車</button></div>' +
       '<p class="product-note">' + esc(C.shippingNote || "") + '</p></div></article>';
   }).join("");
+
+  /* 滑動圖片 */
+  document.querySelectorAll(".gallery").forEach(function (g) {
+    var track = g.querySelector(".track"), dots = g.querySelectorAll(".dot");
+    var idx = function () { return Math.round(track.scrollLeft / track.clientWidth); };
+    var go = function (i) { var n = dots.length || 1; i = (i + n) % n; track.scrollTo({ left: i * track.clientWidth, behavior: "smooth" }); };
+    track.addEventListener("scroll", function () { var i = idx(); dots.forEach(function (d, k) { d.classList.toggle("on", k === i); }); }, { passive: true });
+    g.addEventListener("click", function (e) {
+      if (e.target.classList.contains("prev")) go(idx() - 1);
+      else if (e.target.classList.contains("next")) go(idx() + 1);
+      else if (e.target.classList.contains("dot")) go(Number(e.target.dataset.i));
+    });
+  });
 
   $("#productList").addEventListener("click", function (e) {
     var card = e.target.closest(".product"); if (!card) return;

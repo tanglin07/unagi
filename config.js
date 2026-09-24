@@ -20,7 +20,11 @@ window.SITE_CONFIG = {
       name: "Oishi 外銷級蒲燒鰻",
       spec: "每盒 4 片・每片約 160g（±25g）・單片真空包裝｜一片一餐，小家庭剛剛好，自用送禮兩相宜",
       price: 599,
-      image: "images/product-real.jpg"
+      image: "images/product-real.jpg",          // 購物車縮圖
+      gallery: [                                  // 預購區滑動圖片（依序顯示）
+        { src: "images/giftbox.jpg",     caption: "禮盒示意圖" },
+        { src: "images/product-real.jpg", caption: "實物拍攝・一盒 4 片" }
+      ]
     }
   ],
 
