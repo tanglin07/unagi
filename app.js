@@ -155,7 +155,7 @@
     $("#orderSummary").innerHTML = Object.keys(cart).map(function (k) {
       var p = byId(k);
       return "<div><span>" + esc(p.name) + " × " + cart[k] + " 盒</span><span>" + fmt(p.price * cart[k]) + "</span></div>";
-    }).join("") + '<div class="tot"><span>合計（不含運費）</span><span>' + fmt(cartSum()) + "</span></div>";
+    }).join("") + '<div class="tot"><span>合計（運費自付）</span><span>' + fmt(cartSum()) + "</span></div>";
     $("#orderFormView").hidden = false; $("#orderDoneView").hidden = true;
     $("#formErr").textContent = "";
     modal.hidden = false; document.body.style.overflow = "hidden";

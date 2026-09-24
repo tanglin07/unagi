@@ -30,7 +30,7 @@ unagi-site/
 
 | 項目 | config.js | Code.gs |
 |---|---|---|
-| 價格 | `price: 1280` | `PRODUCTS.gift4.price` |
+| 價格 | `price: 599` | `PRODUCTS.gift4.price` |
 | 每盒規格 | `spec` | — |
 | 成團目標 | `goal: 800` | `GOAL` |
 | 截止日 | `deadline` | — |

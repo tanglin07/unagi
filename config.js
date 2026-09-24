@@ -11,15 +11,15 @@ window.SITE_CONFIG = {
   goal: 800,
 
   // 3) 預購截止日（YYYY-MM-DD），留空則不顯示倒數
-  deadline: "2026-10-31",
+  deadline: "2026-11-30",
 
   // 4) 商品（價格請務必與 Apps Script 的 PRODUCTS 一致）
   products: [
     {
       id: "gift4",
-      name: "外銷級蒲燒鰻禮盒",
-      spec: "每盒 4 包真空包裝（每包重量待補）",   // ← 請修改
-      price: 1280,                                   // ← 請修改（新台幣）
+      name: "Oishi 外銷級蒲燒鰻",
+      spec: "每盒 1 片，每片約 160g（±25g），真空包裝",
+      price: 599,
       image: "images/giftbox.jpg"
     }
   ],
@@ -28,8 +28,8 @@ window.SITE_CONFIG = {
   maxPerOrder: 50,
 
   // 6) 出貨／付款說明（顯示在預購區與常見問題）
-  shippingNote: "成團後約 7–14 天陸續以冷凍宅配出貨，運費另計（待公布）",
-  paymentNote: "預購免先付款。成團後我們會以 Email／LINE 通知匯款資訊，確認收款後出貨。",
+  shippingNote: "成團後約 7–14 天陸續以冷凍宅配出貨，運費由買家自付",
+  paymentNote: "預購免先付款。成團後我們會以 Email／LINE 通知付款，可選擇信用卡刷卡或銀行匯款，確認收款後出貨。",
 
   // 7) 聯絡方式
   facebookUrl: "https://www.facebook.com/profile.php?id=100063738142128",
