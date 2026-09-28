@@ -659,3 +659,14 @@ details p{padding:0 0 24px;color:var(--ink-2);max-width:640px}
   .lb-scroll.wide img{max-width:none;height:100%;width:auto;margin:0}
 }
 @media (max-width:640px){.hc-btn{display:none}}
+
+/* 祝福卡：附／不附 */
+.card-choice{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:12px}
+#orderForm .cc-opt{margin:0;cursor:pointer}
+.cc-opt input{position:absolute;opacity:0;pointer-events:none}
+.cc-opt span{display:flex;flex-direction:column;justify-content:center;min-height:52px;border:1.5px solid #d6c5a6;border-radius:12px;padding:8px 14px;background:#fff;font-weight:700;color:var(--navy-900);transition:border-color .2s,background .2s}
+.cc-opt small{font-weight:400;font-size:.78rem;color:var(--ink-3)}
+.cc-opt input:checked + span{border-color:var(--red);background:#fff7f5;box-shadow:0 0 0 3px rgba(179,38,43,.12)}
+.cc-opt input:focus-visible + span{outline:2px solid var(--royal-lt);outline-offset:2px}
+.form-hint{font-size:.84rem;color:var(--ink-3);margin:0 0 8px}
+#orderForm.no-card .card-fields{display:none}

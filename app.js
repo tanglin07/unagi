@@ -185,6 +185,11 @@
   /* ---------- 送禮模式 ---------- */
   var form = $("#orderForm");
   var giftPreset = { on: false, msg: "" };
+  function wantCard() { var r = form.querySelector("input[name=cardWant]:checked"); return !r || r.value === "yes"; }
+  function setCard(on) {
+    form.classList.toggle("no-card", !on);
+    form.elements.cardMsg.disabled = !on || !isGift();
+  }
   function isGift() { var r = form.querySelector("input[name=mode]:checked"); return !!r && r.value === "gift"; }
   function setGift(on) {
     var r = form.querySelector('input[name=mode][value="' + (on ? "gift" : "self") + '"]'); if (r) r.checked = true;
@@ -200,7 +205,10 @@
     $("#cardTo").textContent = (form.elements.rName.value || "").trim() ? "給　" + form.elements.rName.value.trim() : "給　最重要的您";
     $("#cardCount").textContent = msg.length + " / 60";
   }
-  form.addEventListener("change", function (e) { if (e.target.name === "mode") setGift(e.target.value === "gift"); });
+  form.addEventListener("change", function (e) {
+    if (e.target.name === "mode") { setGift(e.target.value === "gift"); setCard(wantCard()); }
+    if (e.target.name === "cardWant") setCard(e.target.value === "yes");
+  });
   form.addEventListener("input", function (e) { if (["cardMsg", "name", "rName"].indexOf(e.target.name) > -1) updateCard(); });
   form.addEventListener("click", function (e) {
     var t = e.target.closest(".msg-tpl"); if (!t) return;
@@ -265,7 +273,7 @@
       gift: isGift(),
       recipientName: isGift() ? form.elements.rName.value.trim() : "",
       recipientPhone: isGift() ? form.elements.rPhone.value.replace(/[\s-]/g, "") : "",
-      cardMsg: isGift() ? form.elements.cardMsg.value.trim() : "",
+      cardMsg: isGift() && wantCard() ? form.elements.cardMsg.value.trim() : "",
       website: form.elements.website.value,
       items: Object.keys(cart).map(function (k) { return { id: k, qty: cart[k] }; })
     };
@@ -282,7 +290,7 @@
       $("#doneMsg").textContent = DEMO ? "（展示模式）實際上線後，確認信會寄到您的 Email。" : "我們已將確認信寄到 " + fd.email + "，成團後會再通知付款與出貨資訊。";
       if (fd.gift) $("#doneMsg").textContent += " 成團出貨時，會直接寄到" + fd.recipientName + "手上" + (fd.cardMsg ? "，並附上您的祝福卡。" : "。");
       $("#orderFormView").hidden = true; $("#orderDoneView").hidden = false;
-      cart = {}; saveCart(); renderCart(); form.reset(); setGift(false); updateCard();
+      cart = {}; saveCart(); renderCart(); form.reset(); setGift(false); setCard(true); updateCard();
       if (typeof res.total === "number") renderProgress(res.total); else fetchProgress();
     };
 
