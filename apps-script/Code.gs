@@ -15,7 +15,8 @@ var SEND_CONFIRM_EMAIL = true;  // 是否寄確認信給顧客
 var OWNER_EMAIL = "";           // 若想每筆新訂單都收到通知，填你的 Email
 var SHOP_NAME = "Oishi 蒲燒鰻魚";
 var SHEET_NAME = "訂單";
-var HEADERS = ["下單時間", "訂單編號", "姓名", "手機", "Email", "收件地址", "到貨時段", "商品明細", "盒數", "金額", "備註", "狀態"];
+var HEADERS = ["下單時間", "訂單編號", "姓名", "手機", "Email", "收件地址", "到貨時段", "商品明細", "盒數", "金額", "備註", "狀態", "送禮", "收禮人姓名", "收禮人電話", "祝福卡內容"];
+// v3：第 13–16 欄為送禮資料；「收件地址」在送禮時為收禮人地址
 // 「狀態」欄：預設「有效」；改成「取消」或「重複」就不會計入進度條
 
 // ====== 第一次請先執行這個函式（建立工作表與標題列）======
@@ -49,6 +50,12 @@ function doPost(e) {
     if (!/^09\d{8}$/.test(phone)) return fail_("手機格式不正確");
     if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) return fail_("Email 格式不正確");
     if (address.length < 6) return fail_("請填寫完整收件地址");
+    var gift = d.gift === true;
+    var rName = gift ? clean_(d.recipientName, 30) : "";
+    var rPhone = gift ? String(d.recipientPhone || "").replace(/[\s-]/g, "").slice(0, 12) : "";
+    var cardMsg = gift ? clean_(d.cardMsg, 60) : "";
+    if (gift && !rName) return fail_("請填寫收禮人姓名");
+    if (gift && !/^0\d{7,9}$/.test(rPhone)) return fail_("收禮人電話格式不正確");
 
     var items = Array.isArray(d.items) ? d.items : [];
     var boxes = 0, amount = 0, detail = [];
@@ -70,14 +77,15 @@ function doPost(e) {
     var orderId = "UN" + Utilities.formatDate(now, "Asia/Taipei", "MMdd") + "-" + ("000" + sh.getLastRow()).slice(-4);
     sh.appendRow([
       Utilities.formatDate(now, "Asia/Taipei", "yyyy/MM/dd HH:mm:ss"), orderId, name, "'" + phone, email,
-      address, timeslot, detail.join("；"), boxes, amount, note, "有效"
+      address, timeslot, detail.join("；"), boxes, amount, note, "有效",
+      gift ? "是" : "", rName, rPhone ? "'" + rPhone : "", cardMsg
     ]);
     SpreadsheetApp.flush();
     cache.put("p_" + phone, "1", 60);
     var total = getTotal_();
     lock.releaseLock();
 
-    try { if (SEND_CONFIRM_EMAIL) sendConfirm_(email, name, orderId, detail, boxes, amount, total); } catch (err) {}
+    try { if (SEND_CONFIRM_EMAIL) sendConfirm_(email, name, orderId, detail, boxes, amount, total, gift ? { name: rName, address: address, msg: cardMsg } : null); } catch (err) {}
     try { if (OWNER_EMAIL) MailApp.sendEmail(OWNER_EMAIL, "【新訂單】" + orderId + " " + name + " " + boxes + " 盒",
       "目前累計 " + total + " / " + GOAL + " 盒\n\n" + name + " " + phone + "\n" + address + "\n" + detail.join("\n") + "\n備註：" + note); } catch (err) {}
 
@@ -113,10 +121,11 @@ function json_(o) {
 }
 function fail_(msg) { return json_({ ok: false, error: msg }); }
 
-function sendConfirm_(email, name, orderId, detail, boxes, amount, total) {
+function sendConfirm_(email, name, orderId, detail, boxes, amount, total, giftInfo) {
+  var giftTxt = giftInfo ? ("送禮對象：" + giftInfo.name + "\n寄送地址：" + giftInfo.address + "\n祝福卡：" + (giftInfo.msg || "（無）") + "\n\n") : "";
   var body =
     name + " 您好：\n\n感謝您預購我們的蒲燒鰻！以下是您的預購資料：\n\n" +
-    "訂單編號：" + orderId + "\n" + detail.join("\n") + "\n共 " + boxes + " 盒，金額 NT$ " + amount.toLocaleString() + "（運費自付）\n\n" +
+    "訂單編號：" + orderId + "\n" + giftTxt + detail.join("\n") + "\n共 " + boxes + " 盒，金額 NT$ " + amount.toLocaleString() + "（運費自付）\n\n" +
     "目前團購進度：" + total + " / " + GOAL + " 盒\n" +
     "滿 " + GOAL + " 盒成團後，我們會再寄信通知付款（可刷卡或匯款）與出貨時間；預購期間不需先付款。\n\n" +
     "如需修改或取消，請回覆此信或私訊我們的 LINE / 臉書，並附上訂單編號。\n\n" + SHOP_NAME + " 敬上";
