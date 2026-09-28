@@ -178,9 +178,56 @@
     }).join("") + '<div class="tot"><span>合計（運費自付）</span><span>' + fmt(cartSum()) + "</span></div>";
     $("#orderFormView").hidden = false; $("#orderDoneView").hidden = true;
     $("#formErr").textContent = "";
+    if (giftPreset.on) { setGift(true); if (giftPreset.msg && !form.elements.cardMsg.value) form.elements.cardMsg.value = giftPreset.msg; updateCard(); giftPreset.on = false; }
     modal.hidden = false; document.body.style.overflow = "hidden";
     setTimeout(function () { $("#orderForm [name=name]").focus(); }, 50);
   }
+  /* ---------- 送禮模式 ---------- */
+  var form = $("#orderForm");
+  var giftPreset = { on: false, msg: "" };
+  function isGift() { var r = form.querySelector("input[name=mode]:checked"); return !!r && r.value === "gift"; }
+  function setGift(on) {
+    var r = form.querySelector('input[name=mode][value="' + (on ? "gift" : "self") + '"]'); if (r) r.checked = true;
+    form.classList.toggle("is-gift", on);
+    form.querySelectorAll(".gift-only input, .gift-only textarea").forEach(function (el) { el.disabled = !on; });
+    $("#addrLabel").textContent = on ? "收禮人地址" : "收件地址";
+    $("#buyerTitle").textContent = on ? "訂購人（您）" : "收件資料";
+  }
+  function updateCard() {
+    var msg = (form.elements.cardMsg.value || "").trim();
+    $("#cardText").textContent = msg || "在這裡寫下想對他說的話";
+    $("#cardFrom").textContent = (form.elements.name.value || "").trim() ? "—— " + form.elements.name.value.trim() + " 敬上" : "—— 您的名字";
+    $("#cardTo").textContent = (form.elements.rName.value || "").trim() ? "給　" + form.elements.rName.value.trim() : "給　最重要的您";
+    $("#cardCount").textContent = msg.length + " / 60";
+  }
+  form.addEventListener("change", function (e) { if (e.target.name === "mode") setGift(e.target.value === "gift"); });
+  form.addEventListener("input", function (e) { if (["cardMsg", "name", "rName"].indexOf(e.target.name) > -1) updateCard(); });
+  form.addEventListener("click", function (e) {
+    var t = e.target.closest(".msg-tpl"); if (!t) return;
+    form.elements.cardMsg.value = t.dataset.msg; updateCard();
+  });
+  setGift(false); updateCard();
+
+  /* 送禮情境入口：選好心意 → 加一盒 → 開購物車 */
+  document.addEventListener("click", function (e) {
+    var b = e.target.closest("[data-gift-start]"); if (!b) return;
+    e.preventDefault();
+    giftPreset = { on: true, msg: b.dataset.msg || "" };
+    var pid = PRODUCTS[0] && PRODUCTS[0].id;
+    if (pid && !cart[pid]) { cart[pid] = 1; saveCart(); renderCart(); }
+    toast(b.dataset.toast || "已幫您準備好一盒，確認數量後下單");
+    openDrawer();
+  });
+  /* 時機小卡：點了換祝福語 */
+  document.querySelectorAll(".occasion").forEach(function (o) {
+    o.addEventListener("click", function () {
+      document.querySelectorAll(".occasion").forEach(function (x) { x.classList.toggle("on", x === o); x.setAttribute("aria-pressed", x === o); });
+      var m = $("#occMsg"); m.classList.remove("swap"); void m.offsetWidth; m.classList.add("swap");
+      m.textContent = o.dataset.msg;
+      $("#occCta").dataset.msg = o.dataset.msg;
+    });
+  });
+
   function closeModal() { modal.hidden = true; document.body.style.overflow = ""; overlay.hidden = true; }
   $("#checkoutBtn").addEventListener("click", openModal);
   $("#orderClose").addEventListener("click", closeModal);
@@ -197,7 +244,11 @@
     if (!fd.name.trim()) bad("name", "請填寫姓名");
     if (!/^09\d{8}$/.test(fd.phone)) bad("phone", "手機格式需為 09 開頭共 10 碼");
     if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(fd.email)) bad("email", "Email 格式不正確");
-    if (fd.address.trim().length < 6) bad("address", "請填寫完整收件地址");
+    if (fd.gift) {
+      if (!fd.recipientName) bad("rName", "請填寫收禮人姓名");
+      if (!/^09\d{8}$/.test(fd.recipientPhone) && !/^0\d{7,9}$/.test(fd.recipientPhone)) bad("rPhone", "請填寫收禮人電話（手機或市話）");
+    }
+    if (fd.address.trim().length < 6) bad("address", fd.gift ? "請填寫收禮人的完整地址" : "請填寫完整收件地址");
     if (!form.elements.agree.checked) errs.push("請勾選同意個資使用");
     return errs;
   }
@@ -211,6 +262,10 @@
       address: form.elements.address.value.trim(),
       timeslot: form.elements.timeslot.value,
       note: form.elements.note.value.trim(),
+      gift: isGift(),
+      recipientName: isGift() ? form.elements.rName.value.trim() : "",
+      recipientPhone: isGift() ? form.elements.rPhone.value.replace(/[\s-]/g, "") : "",
+      cardMsg: isGift() ? form.elements.cardMsg.value.trim() : "",
       website: form.elements.website.value,
       items: Object.keys(cart).map(function (k) { return { id: k, qty: cart[k] }; })
     };
@@ -225,8 +280,9 @@
       if (!res || !res.ok) { $("#formErr").textContent = (res && res.error) || "送出失敗，請稍後再試或私訊我們"; return; }
       $("#doneId").textContent = res.orderId;
       $("#doneMsg").textContent = DEMO ? "（展示模式）實際上線後，確認信會寄到您的 Email。" : "我們已將確認信寄到 " + fd.email + "，成團後會再通知付款與出貨資訊。";
+      if (fd.gift) $("#doneMsg").textContent += " 成團出貨時，會直接寄到" + fd.recipientName + "手上" + (fd.cardMsg ? "，並附上您的祝福卡。" : "。");
       $("#orderFormView").hidden = true; $("#orderDoneView").hidden = false;
-      cart = {}; saveCart(); renderCart(); form.reset();
+      cart = {}; saveCart(); renderCart(); form.reset(); setGift(false); updateCard();
       if (typeof res.total === "number") renderProgress(res.total); else fetchProgress();
     };
 
@@ -251,6 +307,69 @@
     var y = window.scrollY, o = orderSec.getBoundingClientRect();
     mb.classList.toggle("show", y > 500 && (o.top > window.innerHeight || o.bottom < 0));
   }, { passive: true });
+
+  
+  /* ---------- 進場動畫 ---------- */
+  if ("IntersectionObserver" in window && !window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+    var els = document.querySelectorAll(".sec-title, .nh, .scene, .occasion-wrap, .jn, .heat-feature, .hm, .portion-img, .portion-text, .farm-card, .safety-main, .test-table, .product, .steps li, .faq-list, .qr");
+    var io = new IntersectionObserver(function (es) { es.forEach(function (e) { if (e.isIntersecting) { e.target.classList.add("in"); io.unobserve(e.target); } }); }, { rootMargin: "0px 0px -8% 0px" });
+    els.forEach(function (el) { el.classList.add("reveal"); io.observe(el); });
+  }
+
+  
+  /* ---------- 首屏輪播 ---------- */
+  (function () {
+    var root = document.querySelector(".hero-carousel"); if (!root) return;
+    var slides = root.querySelectorAll(".hc-slide"), dotsBox = root.querySelector(".hc-dots");
+    var i = 0, timer = null, DUR = 5500;
+    var reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    slides.forEach(function (_, k) {
+      var d = document.createElement("button"); d.type = "button"; d.className = "hc-dot" + (k ? "" : " on");
+      d.setAttribute("aria-label", "第 " + (k + 1) + " 張"); d.innerHTML = "<i></i>";
+      d.addEventListener("click", function () { go(k, true); }); dotsBox.appendChild(d);
+    });
+    var dots = dotsBox.querySelectorAll(".hc-dot");
+    function go(n, user) {
+      i = (n + slides.length) % slides.length;
+      slides.forEach(function (s, k) { s.classList.toggle("is-on", k === i); s.setAttribute("aria-hidden", k !== i); });
+      dots.forEach(function (d, k) { d.classList.remove("on"); void d.offsetWidth; d.classList.toggle("on", k === i); });
+      if (user) restart();
+    }
+    function restart() { clearInterval(timer); if (!reduce) timer = setInterval(function () { go(i + 1); }, DUR); }
+    root.querySelector(".prev").addEventListener("click", function () { go(i - 1, true); });
+    root.querySelector(".next").addEventListener("click", function () { go(i + 1, true); });
+    root.addEventListener("mouseenter", function () { clearInterval(timer); root.classList.add("paused"); });
+    root.addEventListener("mouseleave", function () { root.classList.remove("paused"); restart(); });
+    var x0 = null;
+    root.addEventListener("touchstart", function (e) { x0 = e.touches[0].clientX; }, { passive: true });
+    root.addEventListener("touchend", function (e) { if (x0 === null) return; var dx = e.changedTouches[0].clientX - x0; if (Math.abs(dx) > 40) go(i + (dx < 0 ? 1 : -1), true); x0 = null; });
+    document.addEventListener("visibilitychange", function () { if (document.hidden) clearInterval(timer); else restart(); });
+    go(0); restart();
+  })();
+
+  
+  /* ---------- 圖片放大檢視 ---------- */
+  (function () {
+    var lb = $("#lightbox"), img = $("#lbImg"), box = $("#lbScroll"), last = null;
+    function open(src, title) {
+      last = document.activeElement; img.src = src; img.alt = title; $("#lbTitle").textContent = title;
+      box.classList.remove("full", "wide");
+      img.onload = function () { if (window.innerWidth < 640 && img.naturalWidth > img.naturalHeight * 1.2) { box.classList.add("wide"); box.scrollLeft = 0; } };
+      lb.hidden = false; document.body.style.overflow = "hidden"; $("#lbClose").focus();
+      var car = document.querySelector(".hero-carousel"); if (car) car.dispatchEvent(new Event("mouseenter"));
+    }
+    function close() { lb.hidden = true; document.body.style.overflow = ""; if (last) last.focus(); var car = document.querySelector(".hero-carousel"); if (car) car.dispatchEvent(new Event("mouseleave")); }
+    document.addEventListener("click", function (e) {
+      var b = e.target.closest(".hc-enlarge");
+      var z = !b && e.target.closest(".hc-zoom img") ? e.target.closest(".hc-zoom").querySelector(".hc-enlarge") : null;
+      var t = b || z; if (!t) return;
+      e.preventDefault(); open(t.dataset.full, t.dataset.title);
+    });
+    img.addEventListener("click", function () { box.classList.toggle("full"); });
+    $("#lbClose").addEventListener("click", close);
+    lb.addEventListener("click", function (e) { if (e.target === lb || e.target === box) close(); });
+    document.addEventListener("keydown", function (e) { if (e.key === "Escape" && !lb.hidden) close(); });
+  })();
 
   renderCart();
 })();

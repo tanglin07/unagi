@@ -2,257 +2,384 @@
 <html lang="zh-Hant-TW">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Oishi 蒲燒鰻魚｜800 盒成團預購</title>
-<meta name="description" content="38 年匠人飼養、外銷日本規格的蒲燒鰻禮盒，滿 800 盒即成團。動物用藥殘留檢驗未檢出，安心上桌。">
-<meta property="og:title" content="Oishi 蒲燒鰻魚｜800 盒成團預購">
-<meta property="og:description" content="38 年匠人飼養、外銷日本規格，滿 800 盒即成團出貨。">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Oishi 蒲燒鰻魚｜送爸媽・送長輩的心意禮盒｜800 盒成團預購</title>
+<meta name="description" content="38 年鰻匠飼養、外銷日本規格的蒲燒鰻。每盒 4 片、每片約 160g，一片剛好一餐，小家庭剛剛好。滿 800 盒成團，預購免先付款。">
+<meta property="og:title" content="Oishi 蒲燒鰻魚｜一片一餐・800 盒成團預購">
+<meta property="og:description" content="每盒 4 片 NT$599，38 年鰻匠飼養、外銷日本規格，自用送禮兩相宜。">
 <meta property="og:image" content="images/giftbox.jpg">
-<meta name="theme-color" content="#101c40">
+<meta name="theme-color" content="#0d1733">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700&family=Noto+Serif+TC:wght@500;700;900&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="style.css?v=20260924e">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700&family=Noto+Serif+TC:wght@500;700;900&family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css?v=v4d">
 </head>
 <body>
 
-<!-- ===== 頂部導覽 ===== -->
+<!-- ============ 導覽列 ============ -->
 <header class="nav" id="nav">
   <div class="wrap nav-inner">
-    <a href="#top" class="brand" aria-label="Oishi 蒲燒鰻魚 首頁"><img src="images/logo-light.png" alt="Oishi 蒲燒鰻魚" width="572" height="300"></a>
+    <a href="#top" class="brand" aria-label="Oishi 蒲燒鰻魚 回到頂端"><img src="images/logo-light.png" alt="Oishi 蒲燒鰻魚" width="572" height="300"></a>
     <nav class="nav-links" aria-label="主選單">
-      <a href="#features">品牌特色</a>
-      <a href="#portion">一餐剛好</a>
-      <a href="#farm">產地實拍</a>
+      <a href="#nutrition">營養</a>
+      <a href="#gift">送禮心意</a>
+      <a href="#portion">一片一餐</a>
+      <a href="#journey">產地到餐桌</a>
       <a href="#safety">安心檢驗</a>
-      <a href="#order">立即預購</a>
-      <a href="#contact">聯絡我們</a>
+      <a href="#heat">加熱方式</a>
+      <a href="#faq">常見問題</a>
     </nav>
-    <button class="cart-btn" id="cartOpen" aria-label="開啟購物車">
-      <svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" d="M3 4h2l2.4 11.2a1.5 1.5 0 0 0 1.5 1.2h8.6a1.5 1.5 0 0 0 1.5-1.1L21 8H6.2"/><circle cx="9.5" cy="20" r="1.3" fill="currentColor"/><circle cx="17.5" cy="20" r="1.3" fill="currentColor"/></svg>
-      <span>購物車</span><b class="badge" id="cartBadge">0</b>
-    </button>
+    <div class="nav-actions">
+      <a href="#order" class="nav-cta">立即預購</a>
+      <button class="cart-btn" id="cartOpen" aria-label="開啟購物車">
+        <svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" d="M3 4h2l2.4 11.2a1.5 1.5 0 0 0 1.5 1.2h8.6a1.5 1.5 0 0 0 1.5-1.1L21 8H6.2"/><circle cx="9.5" cy="20" r="1.3" fill="currentColor"/><circle cx="17.5" cy="20" r="1.3" fill="currentColor"/></svg>
+        <b class="badge" id="cartBadge">0</b>
+      </button>
+    </div>
   </div>
 </header>
 
 <main id="top">
 
-<!-- ===== 首屏 ===== -->
+<!-- ============ 首屏 ============ -->
 <section class="hero">
-  <div class="wave-bg" aria-hidden="true"></div>
+  <div class="hero-bg" aria-hidden="true"></div>
   <div class="wrap hero-grid">
     <div class="hero-text">
-      <p class="eyebrow">UNAGI ・ 預購開團</p>
-      <h1>外銷級<br><span>蒲燒鰻</span></h1>
-      <p class="lead">三十八年匠人飼養，依外銷日本規格逐尾挑選。<br>一片一餐、小家庭剛剛好，自用送禮兩相宜。<br>滿 <b id="goalText">800</b> 盒即成團，新鮮直送到府。</p>
+      <p class="kicker"><span class="kicker-line"></span>送爸媽 ・ 送長輩 ・ 秋冬限量預購</p>
+      <h1>
+        <span class="h1-sub">外銷日本規格</span>
+        <span class="h1-main">蒲燒鰻</span>
+      </h1>
+      <p class="lead"><b class="lead-hook">人不在身邊，心意先到家。</b>三十八年鰻匠飼養的外銷級蒲燒鰻，一片一餐、加熱就能上桌；<br>直送長輩家，附上您寫的祝福卡。</p>
+
+      <div class="price-row">
+        <div class="price-tag"><small>預購價</small><b>NT$599</b><span>／盒・4 片</span></div>
+        <div class="hero-btns">
+          <a href="#order" class="btn btn-red">立即預購</a>
+          <a href="#gift" class="btn btn-outline">我要送禮</a>
+        </div>
+      </div>
 
       <div class="progress-card" aria-live="polite">
         <div class="pc-head">
-          <span>團購進度</span>
-          <span class="pc-num"><b id="pTotal">0</b> / <span id="pGoal">800</span> 盒</span>
+          <span class="pc-label">團購進度</span>
+          <span class="pc-num"><b id="pTotal">0</b><i>/</i><span id="pGoal">800</span> 盒</span>
         </div>
-        <div class="bar" role="progressbar" aria-valuemin="0" aria-valuemax="800" aria-valuenow="0" id="pBar">
+        <div class="bar" role="progressbar" aria-label="團購進度" aria-valuemin="0" aria-valuemax="800" aria-valuenow="0" id="pBar">
           <div class="bar-fill" id="pFill"></div>
-          <span class="bar-pct" id="pPct">0%</span>
         </div>
         <div class="pc-foot">
           <span id="pRemain">還差 800 盒即成團</span>
-          <span id="pDeadline"></span>
+          <span class="pc-right"><span id="pPct">0%</span><span class="sep">・</span><span id="pDeadline"></span></span>
         </div>
       </div>
-
-      <div class="hero-cta">
-        <a href="#order" class="btn btn-red">立即預購</a>
-        <a href="#features" class="btn btn-ghost">了解更多</a>
-      </div>
+      <p class="hero-note">滿 <b id="goalText">800</b> 盒成團 ・ 預購免先付款 ・ 未成團不收任何費用</p>
     </div>
-    <figure class="hero-img">
-      <img src="images/giftbox.jpg" alt="蒲燒鰻禮盒外觀，牛皮紙盒內裝四包真空蒲燒鰻" width="1262" height="1024">
-      <figcaption>禮盒示意圖</figcaption>
+
+    <figure class="hero-visual">
+      <div class="hero-frame hero-carousel" aria-roledescription="carousel" aria-label="商品圖片輪播">
+        <div class="hc-track">
+          <div class="hc-slide is-on" aria-roledescription="slide" aria-label="1 / 4"><img src="images/giftbox.jpg" alt="Oishi 蒲燒鰻禮盒，牛皮紙盒內裝四片真空包裝蒲燒鰻" width="1262" height="1024"><span class="hc-cap">禮盒示意圖</span></div>
+          <div class="hc-slide hc-zoom" aria-roledescription="slide" aria-label="2 / 4"><img src="images/product-real.jpg" alt="實物拍攝：一盒四片單片真空包裝的蒲燒鰻" width="1500" height="2021" loading="lazy"><button type="button" class="hc-enlarge" data-full="images/product-real.jpg" data-title="實物拍攝・一盒 4 片">點圖放大看</button><span class="hc-cap">實物拍攝・一盒 4 片</span></div>
+          <div class="hc-slide hc-zoom" aria-roledescription="slide" aria-label="3 / 4"><img src="images/slide-process.jpg" alt="蒲燒鰻生產流程：即時鎖鮮、IQF 急速冷凍、真空包裝、冷凍宅配" width="1254" height="1018" loading="lazy"><button type="button" class="hc-enlarge" data-full="images/full-process.jpg" data-title="蒲燒鰻食品流程">點圖放大看</button><span class="hc-cap">生產流程</span></div>
+          <div class="hc-slide hc-fit hc-zoom" aria-roledescription="slide" aria-label="4 / 4" style="--bg:url(images/slide-heat.jpg)"><img src="images/slide-heat.jpg" alt="蒲燒鰻食用方式：微波、蒸煮、烤箱、氣炸鍋、隔水加熱" width="1536" height="890" loading="lazy"><button type="button" class="hc-enlarge" data-full="images/full-heat.jpg" data-title="食用方式・五種加熱">點圖放大看</button><span class="hc-cap">加熱方式</span></div>
+        </div>
+        <button type="button" class="hc-btn prev" aria-label="上一張">‹</button>
+        <button type="button" class="hc-btn next" aria-label="下一張">›</button>
+        <div class="hc-dots" role="tablist" aria-label="選擇圖片"></div>
+      </div>
     </figure>
   </div>
+
+  <ul class="trust wrap" aria-label="品牌重點">
+    <li><b>Omega-3</b><span>富含 EPA、DHA</span></li>
+    <li><b>38<small>年</small></b><span>鰻匠飼養經驗</span></li>
+    <li><b>外銷</b><span>日本規格分級</span></li>
+    <li><b>19<small>項</small></b><span>用藥檢驗未檢出</span></li>
+  </ul>
 </section>
 
-<!-- ===== 品牌特色 ===== -->
-<section class="sec sec-kraft" id="features">
+<!-- ============ 跑馬燈 ============ -->
+<div class="ribbon" aria-hidden="true">
+  <div class="ribbon-track">
+    <span>一片一餐</span><i>◆</i><span>單片真空包裝</span><i>◆</i><span>外銷日本規格</span><i>◆</i><span>38 年鰻匠</span><i>◆</i><span>19 項用藥檢驗未檢出</span><i>◆</i><span>自用送禮兩相宜</span><i>◆</i>
+    <span>一片一餐</span><i>◆</i><span>單片真空包裝</span><i>◆</i><span>外銷日本規格</span><i>◆</i><span>38 年鰻匠</span><i>◆</i><span>19 項用藥檢驗未檢出</span><i>◆</i><span>自用送禮兩相宜</span><i>◆</i>
+  </div>
+</div>
+
+<!-- ============ 營養 ============ -->
+<section class="sec sec-cream" id="nutrition">
   <div class="wrap">
-    <div class="sec-head">
-      <p class="eyebrow dark">OUR PROMISE</p>
-      <h2>關於我們的鰻魚</h2>
-      <p class="sub">從鰻苗到上桌，每一個環節都用外銷的標準對待。</p>
+    <header class="sec-title center">
+      <p class="eyebrow">Nutrition</p>
+      <h2>一尾好鰻<br>滿滿的營養</h2>
+      <p class="sub">鰻魚是日本人餐桌上的經典料理，肉質豐腴、營養豐富。給爸媽加菜，也給自己好好吃一餐。</p>
+    </header>
+    <div class="nutri-hero">
+      <article class="nh nh-main">
+        <span class="nh-tag">EPA ・ DHA</span>
+        <h3>Omega-3</h3>
+        <p class="nh-claim">一小片鰻魚的 Omega-3 含量<br>約等於 <b>2 顆</b>魚油膠囊</p>
+      </article>
+      <article class="nh">
+        <span class="nh-tag">維生素 E</span>
+        <p class="nh-claim">約為一般魚類的</p>
+        <h3><b class="nh-x">9</b><small>倍</small></h3>
+      </article>
+      <article class="nh">
+        <span class="nh-tag">維生素 A</span>
+        <p class="nh-claim">約為牛肉的</p>
+        <h3><b class="nh-x">100</b><small>倍</small></h3>
+      </article>
     </div>
-    <div class="feat-grid">
-      <article class="feat">
-        <div class="feat-no">38<small>年</small></div>
-        <h3>匠人飼養</h3>
-        <p>三十八年養鰻經驗，看水色、看食況，一池一池細心照顧。</p>
-      </article>
-      <article class="feat">
-        <div class="feat-icon" aria-hidden="true">
-          <svg viewBox="0 0 48 48"><path d="M6 30l14-4 10-16 4 2-6 14 12-2 2 4-30 8z" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linejoin="round"/><path d="M6 40h36" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/></svg>
+    <ul class="nutri-more" aria-label="其他營養">
+      <li><b>膠原蛋白</b><span>魚皮 Q 彈</span></li>
+      <li><b>蛋白質</b><span>優質動物性蛋白</span></li>
+      <li><b>鈣</b><span>礦物質</span></li>
+      <li><b>多元不飽和脂肪酸</b><span>油脂豐潤</span></li>
+    </ul>
+    <p class="fine center-t">營養數值為同重量食材之一般參考值換算，實際含量依個體與部位而有差異。</p>
+  </div>
+</section>
+
+<!-- ============ 送禮心意 ============ -->
+<section class="sec sec-paper" id="gift">
+  <div class="wrap">
+    <header class="sec-title center">
+      <p class="eyebrow">A Gift of Care</p>
+      <h2>這一盒，想送給誰？</h2>
+      <p class="sub">送禮最難的不是預算，是「他會不會喜歡、會不會麻煩」。我們把這兩件事都先想好了。</p>
+    </header>
+
+    <div class="scenes">
+      <article class="scene scene-parents">
+        <div class="scene-head">
+          <span class="scene-tag">送爸媽</span>
+          <h3>人不在身邊，<br>也能照顧爸媽的餐桌</h3>
         </div>
-        <h3>外銷日本規格</h3>
-        <p>依外銷日本的品質標準分級，尺寸、肉質、油花都經過挑選。</p>
+        <ul class="scene-list">
+          <li><b>不用費工</b>整包放入滾水 3–5 分鐘，不用剪開、不沾手</li>
+          <li><b>不怕浪費</b>一片約 160g、單片真空，吃一片退一片</li>
+          <li><b>吃得安心</b>19 項用藥檢驗全數未檢出，給家人吃更放心</li>
+          <li><b>直送老家</b>您在外地也能下單，附上一句想說的話</li>
+        </ul>
+        <a href="#order" class="btn btn-red" data-gift-start data-msg="爸、媽：天氣轉涼了，記得吃好一點。雖然不能常回家，但一直惦記著你們。" data-toast="已幫您準備好一盒，確認數量後就能寄回家">送爸媽一盒</a>
       </article>
-      <article class="feat">
-        <div class="feat-icon" aria-hidden="true">
-          <svg viewBox="0 0 48 48"><circle cx="17" cy="20" r="7" fill="none" stroke="currentColor" stroke-width="2.2"/><circle cx="31" cy="28" r="9" fill="none" stroke="currentColor" stroke-width="2.2"/><circle cx="31" cy="28" r="2.4" fill="currentColor"/><circle cx="17" cy="20" r="2" fill="currentColor"/></svg>
+
+      <article class="scene scene-elders">
+        <div class="scene-head">
+          <span class="scene-tag">送長輩・親友</span>
+          <h3>拿得出手，<br>也吃得安心</h3>
         </div>
-        <h3>科學健康養殖</h3>
-        <p>飼料添加益生菌，搭配智利魚粉，營養均衡，鰻魚活力足。</p>
+        <ul class="scene-list">
+          <li><b>送得體面</b>外銷日本規格、38 年鰻匠飼養，說得出來歷</li>
+          <li><b>心意剛好</b>一盒 4 片 NT$599，不造成對方回禮的負擔</li>
+          <li><b>好收好放</b>單片真空冷凍，收禮的人不必急著吃完</li>
+          <li><b>直送府上</b>附上祝福卡，免去親自登門的奔波</li>
+        </ul>
+        <a href="#order" class="btn btn-kraft" data-gift-start data-msg="敬祝 闔家平安、福壽綿長。一點心意，請您品嚐。" data-toast="已幫您準備好一盒，確認數量後就能直送府上">送長輩一盒</a>
       </article>
-      <article class="feat">
-        <div class="feat-icon" aria-hidden="true">
-          <svg viewBox="0 0 48 48"><path d="M4 22c5 0 5-4 10-4s5 4 10 4 5-4 10-4 5 4 10 4M4 32c5 0 5-4 10-4s5 4 10 4 5-4 10-4 5 4 10 4" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/></svg>
+    </div>
+
+    <div class="occasion-wrap">
+      <div class="occasion-side">
+        <p class="eyebrow">When to Give</p>
+        <h3 class="occ-title">什麼時候送？<br>我們幫您想好第一句話</h3>
+        <div class="occasions" role="group" aria-label="送禮時機">
+          <button type="button" class="occasion on" aria-pressed="true" data-msg="媽，這週沒辦法回去吃飯，先寄一盒鰻魚給你們加菜。晚餐吃飽一點，我週末打給你們。">平日探望</button>
+          <button type="button" class="occasion" aria-pressed="false" data-msg="冬至到了，天冷記得多穿一件。寄一盒鰻魚回家，今年冬至也當作我陪你們吃一頓飯。">冬至團圓</button>
+          <button type="button" class="occasion" aria-pressed="false" data-msg="生日快樂！謝謝您一直以來的照顧，願您天天笑口常開、平安順心。">壽辰・父母親節</button>
         </div>
-        <h3>深海 低汙染</h3>
-        <p>潔淨水源、低汙染的養殖環境，是好鰻魚最基本的起點。</p>
-      </article>
+        <ul class="services">
+          <li><span class="svc-ic" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M3 7h11v9H3zM14 10h4l3 3v3h-7" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/><circle cx="7" cy="17.5" r="1.8" fill="none" stroke="currentColor" stroke-width="1.6"/><circle cx="17" cy="17.5" r="1.8" fill="none" stroke="currentColor" stroke-width="1.6"/></svg></span><div><b>直送長輩家</b><span>訂購人、收禮人分開填，冷凍宅配送到對方手上</span></div></li>
+          <li><span class="svc-ic" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M4 5h16v14H4z" fill="none" stroke="currentColor" stroke-width="1.6"/><path d="M7 9h10M7 12.5h10M7 16h6" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg></span><div><b>代寫祝福卡</b><span>下單時留一段話，我們代為寫上，隨禮盒寄出</span></div></li>
+        </ul>
+      </div>
+      <figure class="card-demo" aria-live="polite">
+        <div class="wish-card">
+          <span class="wc-seal" aria-hidden="true">心意</span>
+          <p class="wc-to">給　最重要的您</p>
+          <p class="wc-text" id="occMsg">媽，這週沒辦法回去吃飯，先寄一盒鰻魚給你們加菜。晚餐吃飽一點，我週末打給你們。</p>
+          <p class="wc-from">—— 您的名字</p>
+        </div>
+        <figcaption>祝福卡示意・下單時可自行修改</figcaption>
+        <a href="#order" class="btn btn-red btn-block" id="occCta" data-gift-start data-msg="媽，這週沒辦法回去吃飯，先寄一盒鰻魚給你們加菜。晚餐吃飽一點，我週末打給你們。">用這段話送一盒</a>
+      </figure>
     </div>
   </div>
 </section>
 
-<!-- ===== 份量／實物 ===== -->
-<section class="sec sec-cream" id="portion">
+<!-- ============ 一片一餐 ============ -->
+<section class="sec sec-kraft" id="portion">
   <div class="wrap portion">
     <figure class="portion-img">
-      <img src="images/product-real.jpg" alt="實物拍攝：一盒四片單片真空包裝的蒲燒鰻" loading="lazy" width="1500" height="2021">
+      <img src="images/product-real.jpg" alt="實物拍攝：一盒四片、單片真空包裝的蒲燒鰻" loading="lazy" width="1500" height="2021">
       <figcaption>實物拍攝・一盒 4 片</figcaption>
     </figure>
     <div class="portion-text">
-      <p class="eyebrow dark">JUST RIGHT</p>
-      <h2>一片一餐<br>小家庭剛剛好</h2>
-      <p class="sub left">每片約 160g，單片真空包裝。想吃就退冰一片，不必一次料理一整尾，也不怕吃不完。</p>
-      <ul class="portion-list">
-        <li><b>一餐的份量</b><span>一片約 160g（±25g），小家庭一餐剛好</span></li>
-        <li><b>單片真空包裝</b><span>吃多少退冰多少，冷凍保存好方便</span></li>
-        <li><b>自用送禮兩相宜</b><span>一盒 4 片，自家餐桌或送給親友都合適</span></li>
-      </ul>
+      <p class="eyebrow">Just Right</p>
+      <h2>一片一餐<br>份量剛剛好</h2>
+      <p class="body">每片約 160g、單片真空包裝。想吃就退冰一片，不必一次料理一整尾；長輩食量小，也不怕吃不完。</p>
+      <dl class="spec">
+        <div><dt>份量</dt><dd>每片約 160g（±25g），小家庭一餐剛好</dd></div>
+        <div><dt>包裝</dt><dd>單片真空，吃多少退冰多少</dd></div>
+        <div><dt>內容</dt><dd>一盒 4 片，自用送禮兩相宜</dd></div>
+      </dl>
+      <div class="howto">
+        <p class="howto-title">三步驟，鰻魚飯上桌 <a href="#heat">五種加熱方式 ›</a></p>
+        <ol>
+          <li><b>退冰</b><span>前一晚移到冷藏</span></li>
+          <li><b>加熱</b><span>整包放入滾水 3–5 分鐘</span></li>
+          <li><b>上桌</b><span>剪開淋醬配白飯</span></li>
+        </ol>
+      </div>
     </div>
   </div>
 </section>
 
-<!-- ===== 產地實拍 ===== -->
-<section class="sec sec-navy" id="farm">
+<!-- ============ 從池子到餐桌 ============ -->
+<section class="sec sec-navy" id="journey">
   <div class="wrap">
-    <div class="sec-head">
-      <p class="eyebrow">FROM OUR FARM</p>
-      <h2>產地實拍</h2>
-      <p class="sub">沒有修圖、沒有擺拍，這就是我們每天的工作現場。</p>
-    </div>
-    <div class="farm-grid">
-      <figure class="farm-card">
-        <img src="images/sorting.jpg" alt="工作人員在養殖池邊以人工逐尾分級挑選鰻魚" loading="lazy" width="1080" height="1920">
-        <figcaption><b>人工逐尾分級</b>起鰻當天，由經驗豐富的師傅依大小與品質逐尾挑選。</figcaption>
-      </figure>
-      <figure class="farm-card">
-        <img src="images/eels.jpg" alt="養殖池中活力充沛的鰻魚近照" loading="lazy" width="1100" height="1916">
-        <figcaption><b>活力鰻魚近照</b>流水充氧的池子裡，鰻魚體色光亮、游動有力。</figcaption>
-      </figure>
-    </div>
-  </div>
-</section>
-
-<!-- ===== 安心檢驗 ===== -->
-<section class="sec sec-cream" id="safety">
-  <div class="wrap safety-grid">
-    <div class="safety-main">
-      <p class="eyebrow dark">SAFETY TEST</p>
-      <h2>用藥檢驗<br>安心上桌</h2>
-      <div class="nd-stat">
-        <span class="nd-num">19</span>
-        <span class="nd-txt">項檢驗<br><b>全數 N.D. 未檢出</b></span>
-      </div>
-      <p class="muted">送驗單位：台灣區鰻蝦輸出業同業公會 水產品檢驗中心<br>
-        報告書編號：53175 ・ 報告發行日：115 年 09 月 04 日</p>
-      <p class="fine">N.D.（Not Detected）表示低於定量極限、未檢出。檢驗結果僅對送驗樣品負責，如需查閱完整報告歡迎私訊詢問。</p>
-    </div>
-    <div class="test-list">
-      <div class="test-group">
-        <h3>孔雀綠及其代謝物 <span>1 項</span></h3>
-        <p>孔雀綠（含還原型孔雀綠總量）</p>
-      </div>
-      <div class="test-group">
-        <h3>農藥（五松） <span>5 項</span></h3>
-        <p>陶斯松、芬殺松、撲滅松、三氯松、二氯松</p>
-      </div>
-      <div class="test-group">
-        <h3>硝基呋喃代謝物 <span>4 項</span></h3>
-        <p>AOZ、AMOZ、SC、AH</p>
-      </div>
-      <div class="test-group">
-        <h3>動物用藥多重殘留 <span>9 項</span></h3>
-        <p>西氟沙星、恩氟喹啉羧酸、歐索林酸、磺胺二甲氧嘧啶、磺胺一甲氧嘧啶、磺胺甲基嘧啶、磺胺二甲基嘧啶、磺胺喹啉、三氯仿</p>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ===== 營養 ===== -->
-<section class="sec sec-navy2" id="nutrition">
-  <div class="wrap nutri">
-    <div>
-      <p class="eyebrow">NUTRITION</p>
-      <h2>一尾好鰻<br>滿滿的營養</h2>
-      <p class="sub left">鰻魚自古就是日本人夏日餐桌上的經典料理，肉質豐腴、營養豐富，全家大小都適合。</p>
-    </div>
-    <ul class="chips">
-      <li><b>蛋白質</b><span>優質動物性蛋白</span></li>
-      <li><b>維生素 A</b><span>含量豐富</span></li>
-      <li><b>維生素 E</b><span>天然來源</span></li>
-      <li><b>DHA</b><span>Omega-3 脂肪酸</span></li>
-      <li><b>EPA</b><span>Omega-3 脂肪酸</span></li>
-      <li><b>鈣</b><span>礦物質</span></li>
-      <li><b>膠原蛋白</b><span>魚皮Q彈</span></li>
-    </ul>
-  </div>
-</section>
-
-<!-- ===== 預購 ===== -->
-<section class="sec sec-kraft" id="order">
-  <div class="wrap">
-    <div class="sec-head">
-      <p class="eyebrow dark">PRE-ORDER</p>
-      <h2>立即預購</h2>
-      <p class="sub">加入購物車並按下「確定下單」、填完資料送出，才會計入團購進度。</p>
-    </div>
-
-    <div id="productList" class="product-list"></div>
-
-    <ol class="steps">
-      <li><span>1</span><b>選擇盒數</b>加入購物車</li>
-      <li><span>2</span><b>確定下單</b>填寫收件資料</li>
-      <li><span>3</span><b>等待成團</b>通知刷卡／匯款</li>
-      <li><span>4</span><b>冷凍宅配</b>新鮮送到府</li>
+    <header class="sec-title center light">
+      <p class="eyebrow">From Pond to Table</p>
+      <h2>從池子到餐桌<br>每一步都算好時間</h2>
+      <p class="sub">三十八年的養殖經驗，加上一條不讓鮮度流失的生產線。</p>
+    </header>
+    <ol class="journey">
+      <li class="jn">
+        <figure class="jn-img"><img src="images/farm-pond.jpg" alt="養殖池中搶食的鰻魚" loading="lazy" width="801" height="1400" style="object-position:50% 70%"><figcaption>產地實拍</figcaption></figure>
+        <div class="jn-body"><span class="jn-step">飼養</span><h3>38 年鰻匠，一池一池顧</h3><p>飼料添加益生菌、搭配智利魚粉；潔淨水源、低汙染的環境，養出活力好的鰻魚。</p></div>
+      </li>
+      <li class="jn">
+        <figure class="jn-img"><img src="images/sorting-new.jpg" alt="師傅在池邊人工逐尾分級挑選鰻魚" loading="lazy" width="1204" height="1400" style="object-position:50% 45%"><figcaption>產地實拍</figcaption></figure>
+        <div class="jn-body"><span class="jn-step">分級</span><h3>依外銷日本規格，逐尾挑選</h3><p>起鰻當天由師傅親手分級，尺寸、肉質、油花一致，才進到下一步。</p></div>
+      </li>
+      <li class="jn">
+        <figure class="jn-img"><img src="images/eels.jpg" alt="活力充沛的鰻魚近照" loading="lazy" width="1100" height="1916" style="object-position:50% 50%"><figcaption>產地實拍</figcaption></figure>
+        <div class="jn-body"><span class="jn-step">蒲燒</span><h3>活鰻到成品，只要 <em>1.5</em> 小時</h3><p>專業處理、清洗去腥後直接蒲燒，不做多餘添加，把新鮮留到最後。</p></div>
+      </li>
+      <li class="jn">
+        <figure class="jn-img"><img src="images/proc-iqf.jpg" alt="蒲燒鰻急速冷凍" loading="lazy" width="1024" height="424"><figcaption>示意圖</figcaption></figure>
+        <div class="jn-body"><span class="jn-step">冷凍</span><h3><em>−35°C</em> IQF 急速冷凍</h3><p>成品立即急速冷凍，之後全程冷凍倉儲管理，鎖住剛烤好的風味。</p></div>
+      </li>
+      <li class="jn">
+        <figure class="jn-img"><img src="images/product-real.jpg" alt="實物拍攝：單片真空包裝的蒲燒鰻，一盒四片" loading="lazy" width="1500" height="2021" style="object-position:50% 40%"><figcaption>實物拍攝</figcaption></figure>
+        <div class="jn-body"><span class="jn-step">包裝</span><h3>單片真空，袋子可直接加熱</h3><p>食品級耐熱真空袋，經 SGS 檢驗；整包放入滾水加熱，免拆袋、不沾手。</p></div>
+      </li>
+      <li class="jn jn-last">
+        <div class="jn-ic" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M3 7h11v9H3zM14 10h4l3 3v3h-7" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/><circle cx="7" cy="17.5" r="1.8" fill="none" stroke="currentColor" stroke-width="1.5"/><circle cx="17" cy="17.5" r="1.8" fill="none" stroke="currentColor" stroke-width="1.5"/></svg></div>
+        <div class="jn-body"><span class="jn-step">到府</span><h3>黑貓宅急便，冷凍直送到府</h3><p>全程低溫配送，送到您家，或直接送到爸媽、長輩手上。</p></div>
+      </li>
     </ol>
   </div>
 </section>
 
-<!-- ===== 常見問題 ===== -->
-<section class="sec sec-cream" id="faq">
-  <div class="wrap narrow">
-    <div class="sec-head">
-      <p class="eyebrow dark">FAQ</p>
-      <h2>常見問題</h2>
+<!-- ============ 檢驗 ============ -->
+<section class="sec sec-cream" id="safety">
+  <div class="wrap safety">
+    <div class="safety-main">
+      <p class="eyebrow">Safety Test</p>
+      <h2>給爸媽吃的<br>更要安心</h2>
+      <div class="nd">
+        <span class="nd-num">19</span>
+        <span class="nd-txt">項檢驗<br><b>全數 N.D. 未檢出</b></span>
+      </div>
+      <p class="meta">送驗單位　台灣區鰻蝦輸出業同業公會 水產品檢驗中心<br>報告編號　53175 ・ 115 年 09 月 04 日發行</p>
+      <p class="meta">真空包裝袋：食品級耐熱材質，經 SGS 檢驗。</p>
+      <p class="fine">N.D.（Not Detected）表示低於定量極限、未檢出。檢驗結果僅對送驗樣品負責，如需查閱完整報告歡迎私訊詢問。</p>
     </div>
-    <details><summary>預購需要先付款嗎？</summary><p id="faqPay"></p></details>
-    <details><summary>如果沒有達到 800 盒怎麼辦？</summary><p>未達成團門檻，本次團購即取消，因為不需先付款，您不會有任何損失；我們會以 Email 通知每位預購者。</p></details>
-    <details><summary>什麼時候出貨？運費怎麼算？</summary><p id="faqShip"></p></details>
-    <details><summary>收到後如何保存與加熱？</summary><p>收到請立即冷凍保存。食用前放冷藏退冰，連同真空袋隔水加熱約 5–8 分鐘，或剪開後以烤箱／平底鍋小火加熱，淋上醬汁即可做鰻魚飯。</p></details>
-    <details><summary>下單後想修改或取消？</summary><p>請透過 LINE 或臉書私訊，告知訂單編號與姓名，我們會為您處理。</p></details>
+    <div class="test-table" role="table" aria-label="檢驗項目">
+      <div class="tr" role="row"><span class="tk" role="cell">孔雀綠及其代謝物</span><span class="tv" role="cell">孔雀綠（含還原型孔雀綠總量）</span><span class="tn" role="cell">1 項</span></div>
+      <div class="tr" role="row"><span class="tk" role="cell">農藥（五松）</span><span class="tv" role="cell">陶斯松、芬殺松、撲滅松、三氯松、二氯松</span><span class="tn" role="cell">5 項</span></div>
+      <div class="tr" role="row"><span class="tk" role="cell">硝基呋喃代謝物</span><span class="tv" role="cell">AOZ、AMOZ、SC、AH</span><span class="tn" role="cell">4 項</span></div>
+      <div class="tr" role="row"><span class="tk" role="cell">動物用藥多重殘留</span><span class="tv" role="cell">西氟沙星、恩氟喹啉羧酸、歐索林酸、磺胺二甲氧嘧啶、磺胺一甲氧嘧啶、磺胺甲基嘧啶、磺胺二甲基嘧啶、磺胺喹啉、三氯仿</span><span class="tn" role="cell">9 項</span></div>
+    </div>
   </div>
 </section>
 
-<!-- ===== 聯絡 ===== -->
+<!-- ============ 加熱方式 ============ -->
+<section class="sec sec-kraft" id="heat">
+  <div class="wrap">
+    <header class="sec-title center">
+      <p class="eyebrow">How to Heat</p>
+      <h2>五種加熱方式<br>家裡有什麼都能用</h2>
+      <p class="sub">最推薦隔水加熱：不用剪袋、不用顧火，長輩自己也能輕鬆上桌。</p>
+    </header>
+    <div class="heat-feature">
+      <figure class="hf-img"><img src="images/heat-bath.jpg" alt="整包真空袋放入滾水中加熱" loading="lazy" width="1048" height="752"><figcaption>示意圖</figcaption></figure>
+      <div class="hf-body">
+        <span class="hf-badge">最推薦・長輩最省事</span>
+        <h3>隔水加熱</h3>
+        <p class="hf-time"><b>3–5</b> 分鐘</p>
+        <ol class="hf-steps">
+          <li>整包真空袋<strong>不需剪開</strong>，放入滾水，水要蓋過鰻魚</li>
+          <li>加熱約 3–5 分鐘，取出剪開，淋醬配白飯即可</li>
+        </ol>
+        <p class="hf-note">真空袋為耐熱材質，經第三方檢驗，可放心直接加熱。</p>
+      </div>
+    </div>
+    <div class="heat-grid">
+      <article class="hm"><img src="images/heat-micro.jpg" alt="微波加熱後的蒲燒鰻" loading="lazy" width="576" height="364"><div class="hm-body"><h3>微波 <span>最快</span></h3><p class="hm-time">1–3 分鐘</p><p>拆袋裝盤，覆蓋保鮮膜（勿碰到食品）。1400W 約 1 分、700W 約 2 分、600W 約 3 分。</p></div></article>
+      <article class="hm"><img src="images/heat-steam.jpg" alt="蒸鍋加熱蒲燒鰻" loading="lazy" width="572" height="372"><div class="hm-body"><h3>蒸煮 <span>保留原味</span></h3><p class="hm-time">8–10 分鐘</p><p>拆袋放耐熱盤，外鍋半杯水（可加蒸架），蒸到開關跳起。</p></div></article>
+      <article class="hm"><img src="images/heat-oven.jpg" alt="烤箱加熱蒲燒鰻" loading="lazy" width="536" height="376"><div class="hm-body"><h3>烤箱 <span>香氣最濃</span></h3><p class="hm-time">190°C・10–15 分鐘</p><p>拆袋放在鋁箔上烤，外皮微酥、醬香更明顯。</p></div></article>
+      <article class="hm"><img src="images/heat-air.jpg" alt="氣炸鍋加熱蒲燒鰻" loading="lazy" width="536" height="376"><div class="hm-body"><h3>氣炸鍋 <span>酥香</span></h3><p class="hm-time">180°C・8–10 分鐘</p><p>拆袋直接放入氣炸鍋，快速加熱、表面焦香。</p></div></article>
+    </div>
+    <p class="fine center-t">時間依機型與火力不同請自行調整，加熱後請小心燙手。圖片為示意。</p>
+  </div>
+</section>
+
+<!-- ============ 預購 ============ -->
+<section class="sec sec-kraft" id="order">
+  <div class="wrap">
+    <header class="sec-title center">
+      <p class="eyebrow">Pre-Order</p>
+      <h2>立即預購</h2>
+      <p class="sub">加入購物車、按下「確定下單」並送出資料，才會計入團購進度。</p>
+      <p class="helper">不習慣網路下單？<a href="#contact">加 LINE 傳訊息給我們</a>，我們幫您代訂。</p>
+    </header>
+
+    <div id="productList" class="product-list"></div>
+
+    <ol class="steps">
+      <li><span>1</span><b>選擇盒數</b><em>加入購物車</em></li>
+      <li><span>2</span><b>確定下單</b><em>填寫收件資料</em></li>
+      <li><span>3</span><b>等待成團</b><em>通知刷卡／匯款</em></li>
+      <li><span>4</span><b>冷凍宅配</b><em>新鮮送到府</em></li>
+    </ol>
+  </div>
+</section>
+
+<!-- ============ 常見問題 ============ -->
+<section class="sec sec-cream" id="faq">
+  <div class="wrap faq">
+    <header class="sec-title">
+      <p class="eyebrow">FAQ</p>
+      <h2>常見問題</h2>
+      <p class="sub left">還有其他疑問，歡迎透過 LINE 或臉書私訊我們。</p>
+    </header>
+    <div class="faq-list">
+      <details><summary>預購需要先付款嗎？</summary><p id="faqPay"></p></details>
+      <details><summary>如果沒有達到 800 盒怎麼辦？</summary><p>未達成團門檻，本次團購即取消。因為不需先付款，您不會有任何損失，我們也會以 Email 通知每位預購者。</p></details>
+      <details><summary>可以直接寄到爸媽或長輩家嗎？</summary><p>可以。下單時選「送禮」，分別填寫您（訂購人）與收禮人的資料，成團出貨時會直接冷凍宅配到收禮人手上，付款與成團通知則寄給您。</p></details>
+      <details><summary>祝福卡怎麼寫？</summary><p>選「送禮」後，在「祝福卡」欄位寫下想說的話（60 字內），也可以點選我們準備好的範例再修改，我們會代為寫上、隨禮盒寄出。</p></details>
+      <details><summary>什麼時候出貨？運費怎麼算？</summary><p id="faqShip"></p></details>
+      <details><summary>收到後如何保存與加熱？</summary><p>收到請立即冷凍保存。食用前一晚移到冷藏退冰，最簡單的方式是整包真空袋放入滾水加熱 3–5 分鐘；也可以用微波、蒸、烤箱或氣炸鍋，詳見上方「五種加熱方式」。</p></details>
+      <details><summary>下單後想修改或取消？</summary><p>請透過 LINE 或臉書私訊，告知訂單編號與姓名，我們會為您處理。</p></details>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 聯絡 ============ -->
 <section class="sec sec-navy" id="contact">
   <div class="wrap contact">
     <div>
-      <p class="eyebrow">CONTACT</p>
+      <p class="eyebrow">Contact</p>
       <h2>有任何問題<br>歡迎找我們</h2>
       <p class="sub left">掃描 QR Code 加入 LINE，或到臉書粉專私訊，我們會盡快回覆。</p>
       <div class="contact-btns">
         <a class="btn btn-line" id="lineBtn" href="#" target="_blank" rel="noopener">加入 LINE</a>
-        <a class="btn btn-fb" id="fbBtn" href="#" target="_blank" rel="noopener">臉書粉專</a>
+        <a class="btn btn-outline" id="fbBtn" href="#" target="_blank" rel="noopener">臉書粉專</a>
       </div>
     </div>
     <div class="qr">
@@ -264,18 +391,19 @@
 </main>
 
 <footer class="footer">
-  <div class="wrap">
-    <img class="foot-logo" src="images/logo-light.png" alt="Oishi 蒲燒鰻魚" width="572" height="300"><p>© <span id="yr"></span> Oishi 蒲燒鰻魚 ・ 本網站僅收集出貨所需資料，不作其他用途。</p>
+  <div class="wrap foot">
+    <img class="foot-logo" src="images/logo-light.png" alt="Oishi 蒲燒鰻魚" width="572" height="300">
+    <p>© <span id="yr"></span> Oishi 蒲燒鰻魚<br>本網站僅收集出貨所需資料，不作其他用途。</p>
   </div>
 </footer>
 
 <!-- 手機底部固定列 -->
 <div class="mobile-bar" id="mobileBar">
   <div class="mb-prog"><span id="mbText">0 / 800 盒</span><div class="mb-bar"><i id="mbFill"></i></div></div>
-  <a href="#order" class="btn btn-red btn-sm">預購</a>
+  <a href="#order" class="btn btn-red btn-sm">預購 NT$599</a>
 </div>
 
-<!-- ===== 購物車抽屜 ===== -->
+<!-- ============ 購物車抽屜 ============ -->
 <div class="overlay" id="overlay" hidden></div>
 <aside class="drawer" id="drawer" aria-hidden="true" aria-labelledby="drawerTitle">
   <div class="drawer-head">
@@ -290,20 +418,49 @@
   </div>
 </aside>
 
-<!-- ===== 下單表單 ===== -->
+<!-- ============ 下單表單 ============ -->
 <div class="modal" id="orderModal" role="dialog" aria-modal="true" aria-labelledby="orderTitle" hidden>
   <div class="modal-box">
     <button class="x" id="orderClose" aria-label="關閉">×</button>
-
     <div id="orderFormView">
       <h3 id="orderTitle">填寫預購資料</h3>
       <div class="order-summary" id="orderSummary"></div>
       <div class="demo-note" id="demoNote" hidden>目前為展示模式：尚未連接訂單系統，送出不會寫入資料。</div>
       <form id="orderForm" novalidate>
+        <fieldset class="mode">
+          <legend>這盒要給誰？</legend>
+          <label class="mode-opt"><input type="radio" name="mode" value="self" checked><span><b>自己吃</b><small>寄給我</small></span></label>
+          <label class="mode-opt"><input type="radio" name="mode" value="gift"><span><b>送禮</b><small>直送對方・附祝福卡</small></span></label>
+        </fieldset>
+        <p class="form-sec" id="buyerTitle">收件資料</p>
         <label>姓名 <em>*</em><input name="name" required maxlength="30" autocomplete="name"></label>
         <label>手機 <em>*</em><input name="phone" required inputmode="numeric" placeholder="0912345678" maxlength="10" autocomplete="tel"></label>
         <label>Email <em>*</em><input name="email" type="email" required maxlength="80" autocomplete="email" placeholder="用於寄送成團與付款通知"></label>
-        <label>收件地址 <em>*</em><input name="address" required maxlength="120" autocomplete="street-address"></label>
+        <div class="gift-only">
+          <p class="form-sec">收禮人</p>
+          <div class="row2">
+            <label>收禮人姓名 <em>*</em><input name="rName" maxlength="30" placeholder="例如：王媽媽" disabled></label>
+            <label>收禮人電話 <em>*</em><input name="rPhone" inputmode="tel" maxlength="12" placeholder="手機或市話" disabled></label>
+          </div>
+        </div>
+        <label><span id="addrLabel">收件地址</span> <em>*</em><input name="address" required maxlength="120" autocomplete="street-address"></label>
+        <div class="gift-only">
+          <p class="form-sec">祝福卡 <small>（選填・60 字內，我們代為寫上）</small></p>
+          <div class="tpls" aria-label="祝福語範例">
+            <button type="button" class="msg-tpl" data-msg="爸、媽：天氣轉涼了，記得吃好一點。雖然不能常回家，但一直惦記著你們。">給爸媽</button>
+            <button type="button" class="msg-tpl" data-msg="敬祝 闔家平安、福壽綿長。一點心意，請您品嚐。">給長輩</button>
+            <button type="button" class="msg-tpl" data-msg="生日快樂！謝謝您一直以來的照顧，願您天天笑口常開、平安順心。">祝壽生日</button>
+            <button type="button" class="msg-tpl" data-msg="冬至到了，天冷記得多穿一件。寄一盒鰻魚回家，今年冬至也當作我陪你們吃一頓飯。">冬至</button>
+          </div>
+          <textarea name="cardMsg" rows="3" maxlength="60" placeholder="寫下想對他說的話…" disabled aria-label="祝福卡內容"></textarea>
+          <div class="wish-card mini" aria-hidden="true">
+            <span class="wc-seal">心意</span>
+            <p class="wc-to" id="cardTo">給　最重要的您</p>
+            <p class="wc-text" id="cardText">在這裡寫下想對他說的話</p>
+            <p class="wc-from" id="cardFrom">—— 您的名字</p>
+            <span class="wc-count" id="cardCount">0 / 60</span>
+          </div>
+        </div>
         <label>希望到貨時段
           <select name="timeslot"><option>不指定</option><option>上午（13 點前）</option><option>下午（14–18 點）</option></select>
         </label>
@@ -312,9 +469,9 @@
         <label class="check"><input type="checkbox" name="agree" required> 我同意提供以上資料作為本次預購聯繫與出貨使用</label>
         <p class="form-err" id="formErr" role="alert"></p>
         <button class="btn btn-red btn-block" type="submit" id="submitBtn">送出預購</button>
+        <p class="form-help">填寫有困難？<a href="#contact" onclick="document.getElementById('orderClose').click()">加 LINE 由我們代訂</a></p>
       </form>
     </div>
-
     <div id="orderDoneView" hidden>
       <div class="done-seal">預購<br>完成</div>
       <h3>感謝您的預購！</h3>
@@ -327,7 +484,14 @@
 
 <div class="toast" id="toast" role="status"></div>
 
-<script src="config.js?v=20260924e"></script>
-<script src="app.js?v=20260924e"></script>
+<!-- 圖片放大檢視 -->
+<div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="放大檢視" hidden>
+  <div class="lb-bar"><span id="lbTitle"></span><button type="button" class="lb-close" id="lbClose" aria-label="關閉">×</button></div>
+  <div class="lb-scroll" id="lbScroll"><img id="lbImg" alt=""></div>
+  <p class="lb-hint">可左右滑動或兩指放大・點圖片切換原尺寸</p>
+</div>
+
+<script src="config.js?v=v4d"></script>
+<script src="app.js?v=v4d"></script>
 </body>
 </html>
