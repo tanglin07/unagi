@@ -249,6 +249,46 @@ function cleanupTestOrders() {
   }
   PropertiesService.getScriptProperties().setProperty("seq", "0");
 }
+// 把封存的舊版訂單（「訂單_舊版_…」分頁）搬回新版「訂單」分頁；跳過測試訂單與已搬過的訂單編號
+function migrateOldOrders() {
+  var ss = SpreadsheetApp.getActiveSpreadsheet(), sh = getSheet_();
+  var have = {}; readOrders_().forEach(function (r) { have[r[C["訂單編號"] - 1]] = 1; });
+  var maxSeq = Number(PropertiesService.getScriptProperties().getProperty("seq") || 0), moved = 0;
+  ss.getSheets().forEach(function (old) {
+    if (old.getName().indexOf(SHEET_NAME + "_舊版") !== 0 || old.getLastRow() < 2) return;
+    var h = old.getRange(1, 1, 1, old.getLastColumn()).getValues()[0];
+    var ix = function (n) { return h.indexOf(n); };
+    old.getRange(2, 1, old.getLastRow() - 1, h.length).getValues().forEach(function (o) {
+      var id = o[ix("訂單編號")], nm = String(o[ix("姓名")] || "");
+      if (!id || have[id] || nm.indexOf("測試訂單") > -1) return;
+      var gift = ix("送禮") > -1 && String(o[ix("送禮")]) === "是";
+      var st = String(o[ix("狀態")] || "").trim(); if (st === "有效" || !st) st = "待付款";
+      var row = new Array(COLS.length).fill("");
+      var t = o[ix("下單時間")];
+      row[C["下單時間"] - 1] = t instanceof Date ? Utilities.formatDate(t, TZ, "yyyy/MM/dd HH:mm") : String(t);
+      row[C["訂單編號"] - 1] = id;
+      row[C["狀態"] - 1] = st;
+      row[C["盒數"] - 1] = o[ix("盒數")];
+      row[C["金額"] - 1] = o[ix("金額")];
+      row[C["類型"] - 1] = gift ? "送禮" : "自用";
+      row[C["收件人"] - 1] = gift ? o[ix("收禮人姓名")] : nm;
+      row[C["收件人電話"] - 1] = "'" + String(gift ? o[ix("收禮人電話")] : o[ix("手機")]).replace(/^'/, "");
+      row[C["收件地址"] - 1] = o[ix("收件地址")];
+      row[C["到貨時段"] - 1] = o[ix("到貨時段")];
+      row[C["祝福卡內容"] - 1] = ix("祝福卡內容") > -1 ? o[ix("祝福卡內容")] : "";
+      row[C["卡片已寫"] - 1] = false;
+      row[C["訂購人"] - 1] = nm;
+      row[C["訂購人手機"] - 1] = "'" + String(o[ix("手機")]).replace(/^'/, "");
+      row[C["訂購人Email"] - 1] = o[ix("Email")];
+      row[C["備註"] - 1] = o[ix("備註")];
+      sh.getRange(nextRow_(sh), 1, 1, row.length).setValues([row]);
+      have[id] = 1; moved++;
+      var m = String(id).match(/-(\d+)$/); if (m) maxSeq = Math.max(maxSeq, Number(m[1]));
+    });
+  });
+  PropertiesService.getScriptProperties().setProperty("seq", String(maxSeq));
+  return moved;
+}
 function getSheet_() {
   var ss = SpreadsheetApp.getActiveSpreadsheet();
   return ss.getSheetByName(SHEET_NAME) || ss.insertSheet(SHEET_NAME);
