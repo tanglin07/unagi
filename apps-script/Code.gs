@@ -162,7 +162,7 @@ function doPost(e) {
     row[C["訂購人手機"] - 1] = "'" + phone;
     row[C["訂購人Email"] - 1] = email;
     row[C["備註"] - 1] = note;
-    sh.appendRow(row);
+    sh.getRange(nextRow_(sh), 1, 1, row.length).setValues([row]);
     SpreadsheetApp.flush();
     cache.put("p_" + phone, "1", 60);
     var total = getTotal_();
@@ -228,6 +228,26 @@ function getTotal_() {
     var v = String(r[0]).trim();
     return (v === "取消" || v === "重複") ? s : s + (Number(bx[i][0]) || 0);
   }, 0);
+}
+// 找「訂單編號」欄最後一筆的下一列（勾選框欄會讓 appendRow 跑到最底，所以不用 appendRow）
+function nextRow_(sh) {
+  var last = sh.getLastRow();
+  if (last < 2) return 2;
+  var ids = sh.getRange(2, C["訂單編號"], last - 1, 1).getValues();
+  var r = ids.length;
+  while (r > 0 && !ids[r - 1][0]) r--;
+  var target = r + 2;
+  if (target > sh.getMaxRows()) sh.insertRowsAfter(sh.getMaxRows(), 200);
+  return target;
+}
+// 刪除測試訂單（訂購人含「測試訂單」）並把訂單流水號歸零；正式開賣前執行一次
+function cleanupTestOrders() {
+  var sh = getSheet_(), last = sh.getLastRow();
+  if (last >= 2) {
+    var v = sh.getRange(2, C["訂購人"], last - 1, 1).getValues();
+    for (var i = v.length - 1; i >= 0; i--) if (String(v[i][0]).indexOf("測試訂單") > -1) sh.deleteRow(i + 2);
+  }
+  PropertiesService.getScriptProperties().setProperty("seq", "0");
 }
 function getSheet_() {
   var ss = SpreadsheetApp.getActiveSpreadsheet();
