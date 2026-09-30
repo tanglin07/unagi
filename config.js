@@ -37,5 +37,5 @@ window.SITE_CONFIG = {
 
   // 7) 聯絡方式
   facebookUrl: "https://www.facebook.com/profile.php?id=100063738142128",
-  lineUrl: ""   // 若有 LINE 加好友連結（https://line.me/ti/p/...）可填入，手機可直接點
+  lineUrl: "https://line.me/ti/p/SMkLJfqChp"   // LINE 加好友連結（由 QR Code 解出）
 };

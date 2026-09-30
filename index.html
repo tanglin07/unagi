@@ -12,7 +12,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700&family=Noto+Serif+TC:wght@500;700;900&family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="style.css?v=v4e">
+<link rel="stylesheet" href="style.css?v=v4f">
 </head>
 <body>
 
@@ -336,7 +336,7 @@
       <p class="eyebrow">Pre-Order</p>
       <h2>立即預購</h2>
       <p class="sub">加入購物車、按下「確定下單」並送出資料，才會計入團購進度。</p>
-      <p class="helper">不習慣網路下單？<a href="#contact">加 LINE 傳訊息給我們</a>，我們幫您代訂。</p>
+      <p class="helper">不習慣網路下單？<a href="https://line.me/ti/p/SMkLJfqChp" target="_blank" rel="noopener">加 LINE 傳訊息給我們</a>，我們幫您代訂。</p>
     </header>
 
     <div id="productList" class="product-list"></div>
@@ -376,16 +376,16 @@
     <div>
       <p class="eyebrow">Contact</p>
       <h2>有任何問題<br>歡迎找我們</h2>
-      <p class="sub left">掃描 QR Code 加入 LINE，或到臉書粉專私訊，我們會盡快回覆。</p>
+      <p class="sub left">掃描或點一下 QR Code 加入 LINE，或到臉書粉專私訊，我們會盡快回覆。</p>
       <div class="contact-btns">
         <a class="btn btn-line" id="lineBtn" href="#" target="_blank" rel="noopener">加入 LINE</a>
         <a class="btn btn-outline" id="fbBtn" href="#" target="_blank" rel="noopener">臉書粉專</a>
       </div>
     </div>
-    <div class="qr">
+    <a class="qr" id="lineQr" href="https://line.me/ti/p/SMkLJfqChp" target="_blank" rel="noopener" aria-label="點擊加入 LINE 好友">
       <img src="images/line-qr.png" alt="LINE 加好友 QR Code" width="600" height="600" loading="lazy">
-      <span>LINE 掃碼加好友</span>
-    </div>
+      <span>掃碼或點一下加 LINE 好友</span>
+    </a>
   </div>
 </section>
 </main>
@@ -476,7 +476,7 @@
         <label class="check"><input type="checkbox" name="agree" required> 我同意提供以上資料作為本次預購聯繫與出貨使用</label>
         <p class="form-err" id="formErr" role="alert"></p>
         <button class="btn btn-red btn-block" type="submit" id="submitBtn">送出預購</button>
-        <p class="form-help">填寫有困難？<a href="#contact" onclick="document.getElementById('orderClose').click()">加 LINE 由我們代訂</a></p>
+        <p class="form-help">填寫有困難？<a href="https://line.me/ti/p/SMkLJfqChp" target="_blank" rel="noopener">加 LINE 由我們代訂</a></p>
       </form>
     </div>
     <div id="orderDoneView" hidden>
@@ -498,7 +498,7 @@
   <p class="lb-hint">可左右滑動或兩指放大・點圖片切換原尺寸</p>
 </div>
 
-<script src="config.js?v=v4e"></script>
-<script src="app.js?v=v4e"></script>
+<script src="config.js?v=v4f"></script>
+<script src="app.js?v=v4f"></script>
 </body>
 </html>
